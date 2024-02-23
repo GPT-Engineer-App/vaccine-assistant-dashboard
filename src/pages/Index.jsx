@@ -51,9 +51,14 @@ const Index = () => {
         <Box as="form" w="full" onSubmit={handleSubmit}>
           <FormControl isRequired>
             <FormLabel>¿Qué tipo de perfil profesional es usted?</FormLabel>
-            <Select placeholder="Seleccione una opción" onChange={handleProfessionChange}>
-              <option>Unidad de Medicina Preventiva y Salud Pública</option>
-              {/* Other professions options */}
+            <Select name="profession" placeholder="Seleccione una opción" onChange={handleProfessionChange}>
+              <option value="preventiva">Unidad de Medicina Preventiva y Salud Pública</option>
+              <option value="vacunacion-internacional">Centro de Vacunación Internacional</option>
+              <option value="gestor-salud-publica">Gestor de Salud Pública</option>
+              <option value="atencion-primaria">Atención primaria</option>
+              <option value="prevencion-riesgos-laborales">Prevención de riesgos laborales</option>
+              <option value="sociedad-cientifica">Sociedad científica</option>
+              <option value="industria-farmaceutica">Industria Farmacéutica</option>
             </Select>
           </FormControl>
 
@@ -67,15 +72,59 @@ const Index = () => {
               </Select>
             </FormControl>
 
-            {/* Other demographic and clinical inputs */}
-            {/* ... */}
+            <FormControl isRequired>
+              <FormLabel>Edad</FormLabel>
+              <Input name="age" type="number" onChange={handlePatientInfoChange} placeholder="Ingrese la edad en años" />
+            </FormControl>
+
+            <FormControl isRequired>
+              <FormLabel>Raza/grupo étnico</FormLabel>
+              <Select name="ethnicity" onChange={handlePatientInfoChange} placeholder="Seleccione la raza/grupo étnico">
+                <option value="caucasico">Caucásico</option>
+                <option value="negro">Negro</option>
+                <option value="asiatico">Asiático</option>
+                <option value="mestizo">Mestizo</option>
+                {/* Other ethnic groups if necessary */}
+              </Select>
+            </FormControl>
+
+            <FormControl isRequired>
+              <FormLabel>Procedencia</FormLabel>
+              <Select name="origin" onChange={handlePatientInfoChange} placeholder="Seleccione la procedencia">
+                <option value="residente">Residente</option>
+                <option value="extranjero">Extranjero</option>
+                {/* Include all continent options */}
+              </Select>
+            </FormControl>
+
+            <FormControl isRequired>
+              <FormLabel>Comunidad Autónoma</FormLabel>
+              <Select name="community" onChange={handlePatientInfoChange} placeholder="Seleccione la CC.AA">
+                {/* List all autonomous communities */}
+              </Select>
+            </FormControl>
 
             <FormControl isRequired>
               <FormLabel>¿Qué factores de riesgo tiene el paciente?</FormLabel>
               <CheckboxGroup onChange={handleRiskFactorsChange}>
                 <VStack alignItems="flex-start">
                   <Checkbox value="cardiopatias">Cardiopatías e hipertensión</Checkbox>
-                  {/* Other risk factors options */}
+                  <Checkbox value="enfermedades-cronicas">Enfermedades crónicas</Checkbox>
+                  <Checkbox value="enfermedades-pulmonares">Enfermedades pulmonares crónicas</Checkbox>
+                  <Checkbox value="diabetes">Diabetes</Checkbox>
+                  <Checkbox value="trasplante-organo">Trasplante de órgano sólido y/o líquido</Checkbox>
+                  <Checkbox value="inmunosupresion-secundaria">Inmunosupresión secundaria</Checkbox>
+                  <Checkbox value="inmunosupresion-primaria">Inmunosupresión primaria</Checkbox>
+                  <Checkbox value="enfermedad-autoinmune">Enfermedad autoinmune</Checkbox>
+                  <Checkbox value="cancer">Cáncer</Checkbox>
+                  <Checkbox value="hipercolesterolemia-obesidad">Hipercolesterolemia y/o obesidad mórbida</Checkbox>
+                  <Checkbox value="nino-pretermino">Niño nacido pre-término</Checkbox>
+                  <Checkbox value="edad-avanzada">Edad avanzada</Checkbox>
+                  <Checkbox value="eventos-adversos-inmunizacion">Paciente con eventos adversos tras inmunización</Checkbox>
+                  <Checkbox value="riesgo-ocupacional">Paciente con riesgo ocupacional</Checkbox>
+                  <Checkbox value="paciente-viajero">Paciente que va a viajar</Checkbox>
+                  <Checkbox value="embarazo-lactancia">Embarazo y/o lactancia</Checkbox>
+                  {/* Add more risk factors as needed */}
                 </VStack>
               </CheckboxGroup>
             </FormControl>
